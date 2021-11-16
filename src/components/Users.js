@@ -1,16 +1,20 @@
 import {useEffect, useState} from "react";
 import {baseFetch} from "../services/user.rest";
+import "../styles/AppStyles.css";
 import User from "./User";
+import TableHeader from "./UI/TableHeader";
 
 
 export default function Users(){
     const [users, setUsers] = useState([]);
     useEffect(()=>{
         baseFetch('users').then(value => {
+
             setUsers(value)})
     },[])
-
-    return <div className={'users'}>
+    const header = ["USERNAME", "FIRST NAME", "LAST NAME", "EMAIL", "TYPE"]
+    return (<div className={'table'}>
+            <TableHeader header={header}/>
         {
             users.map(user => {
                 return (
@@ -18,5 +22,5 @@ export default function Users(){
                 )
             })
         }
-    </div>
+    </div>)
 }

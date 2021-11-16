@@ -1,0 +1,31 @@
+*{
+    border:0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+
+.App{
+    padding: 40px 0 0;
+    margin: auto auto;
+    width: 80%;
+}
+
+.table_row{
+    display: flex;
+    width: 100%;
+    background-color: #f4f5f8;
+    margin: 2px;
+    height: 40px;
+    align-items: center;
+}
+
+.table_column{
+    width: 20%;
+    margin-left: 20px;
+}
+
+.table_header{
+    background-color: #ffffff;
+}

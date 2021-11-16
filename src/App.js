@@ -1,6 +1,5 @@
 
-//import logo from './logo.svg';
-// import './App.css';
+import './styles/AppStyles.css';
 
 import Users from "./components/Users";
 
