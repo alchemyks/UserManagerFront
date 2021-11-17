@@ -13,7 +13,7 @@ export default function Users(){
             setUsers(value)})
     },[])
     const header = ["USERNAME", "FIRST NAME", "LAST NAME", "EMAIL", "TYPE"]
-    return (<div className={'table'}>
+    return (<div className={'table border_radius'}>
             <TableHeader header={header}/>
         {
             users.map(user => {

@@ -5,20 +5,45 @@
 
 }
 
+.border_radius{
+    border-radius: 4px;
+}
+
+#root{
+    background-color: #eef0f8;
+    height: 100vh;
+}
+
+input, label{
+    display:block;
+}
+
+.dFlex{
+    display: flex;
+}
 
 .App{
-    padding: 40px 0 0;
-    margin: auto auto;
-    width: 80%;
+    padding: 30px;
+    justify-content: space-between;
 }
 
 .table_row{
-    display: flex;
-    width: 100%;
+    /*width: 100%;*/
     background-color: #f4f5f8;
     margin: 2px;
     height: 40px;
     align-items: center;
+}
+
+.table{
+    width: 70%;
+    background-color: white;
+}
+
+.boxForm{
+    width: 28%;
+    background-color: white;
+    padding: 10px;
 }
 
 .table_column{
@@ -28,4 +53,20 @@
 
 .table_header{
     background-color: #ffffff;
+}
+.blockInput_input{
+    background-color: #f4f5f8;
+    width: 100%;
+    height: 36px;
+    /*
+    font-size: 20px;
+    */
+}
+
+.blockInput_label{
+    font-size: 10px;
+}
+
+.boxForm_title{
+    margin: 7px 0;
 }
