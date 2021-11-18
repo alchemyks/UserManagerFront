@@ -80,6 +80,9 @@ input, label{
     justify-content: center;
 }
 
+.not_valid{
+    border: 2px solid red;
+}
 
 .blockButton_input{
     height:  35px;
