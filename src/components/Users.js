@@ -5,7 +5,7 @@ import User from "./User";
 import TableHeader from "./UI/TableHeader";
 
 
-export default function Users(){
+export default function Users({selectUser}){
     const [users, setUsers] = useState([]);
     useEffect(()=>{
         baseFetch('users').then(value => {
@@ -18,7 +18,7 @@ export default function Users(){
         {
             users.map(user => {
                 return (
-                    <User key={user.id} user={user}/>
+                    <User key={user.id} user={user} selectUser={selectUser}/>
                 )
             })
         }
