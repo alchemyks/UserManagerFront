@@ -23,7 +23,6 @@ export default function Form({user, format}) {
         if (user === undefined) {
             return;
         }
-
         setInputsValue({
             'username': user.username,
             'first_name': user.profile.first_name,
@@ -33,7 +32,6 @@ export default function Form({user, format}) {
             'password': '',
             'repeat_password': ''
         })
-        console.log(inputsValue.is_driver, inputsValue.is_driver !== '' ? inputsValue.is_driver : 'DEFAULT')
     }, [user])
 
     const onSubmit = (e) => {
@@ -80,7 +78,7 @@ export default function Form({user, format}) {
     return (
         <div className={'blockForm border_radius'}>
             <div className="blockForm_title">
-                <strong>Create new user</strong>
+                <strong>{user? `${inputsValue.first_name} ${inputsValue.last_name}`: "Create new user"}</strong>
             </div>
             <form>
                 <Input label={"Username"} type={'text'} placeholder={''} name={'username'} value={inputsValue.username}
