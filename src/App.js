@@ -9,13 +9,14 @@ function App() {
 
     const [user, setUser] = useState(undefined)
 
+    let format = 'create';
     const selectUser = (user, e)=>{
-        setUser(user)
-    }
+        setUser(user);
+    };
   return (
     <div className="App dFlex">
-        <Users selectUser={selectUser}/>
-        <Form user={user}/>
+        <Users selectUser={selectUser} />
+        {format === 'update' ? <Form/>: <Form user={user}/>}
     </div>
   );
 }

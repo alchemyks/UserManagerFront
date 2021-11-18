@@ -1,9 +1,9 @@
 import Input from "./UI/Input";
 import Button from "./UI/Button";
 import {useEffect, useState} from "react";
-import {post} from "../services/user.rest";
+import {deleteUser, patchUser, postUser} from "../services/user.rest";
 
-export default function Form({user}) {
+export default function Form({user, format}) {
 
     let initInputsValue = {
         'username': '',
@@ -49,7 +49,30 @@ export default function Form({user}) {
             }
 
         }
-        post('users', requestData).then();
+        postUser('users', requestData, 'POST').then();
+        setInputsValue(initInputsValue)
+
+    }
+    const onDelete = (e) => {
+        e.preventDefault()
+        deleteUser('users', user.id).then();
+        setInputsValue(initInputsValue)
+
+    }
+    const onUpdate = (e) => {
+        e.preventDefault()
+        const requestData = {
+            'username': inputsValue.username,
+            /*'password': inputsValue.password,*/
+            'is_driver': inputsValue.is_driver,
+            'profile': {
+                'first_name': inputsValue.first_name,
+                'last_name': inputsValue.last_name,
+                'email': inputsValue.email
+            }
+
+        }
+        patchUser('users',user.id, requestData).then();
         setInputsValue(initInputsValue)
 
     }
@@ -74,7 +97,6 @@ export default function Form({user}) {
                     <label className={'blockInput_label'}>Type</label>
                     <select className={"blockInput_input"} size={'1'}
                             value={inputsValue.is_driver !== '' ? inputsValue.is_driver : 'DEFAULT'}
-                            defaultValue={'DEFAULT'}
                             name={'is_driver'} onChange={onChangeInputs}>
                         <option value="DEFAULT" disabled={true}> </option>
                         <option value={'false'}>Administrator</option>
@@ -86,7 +108,15 @@ export default function Form({user}) {
                 <Input label={"Repeat password"} type={'text'} placeholder={''} name={'repeat_password'}
                        value={inputsValue.repeat_password} onChange={onChangeInputs}/>
                 <div className="blockButton dFlex blockButton_create">
-                    <Button type={'button'} className={'blockButton_input'} value={'Create'} onClick={onSubmit}/>
+                    {user
+                        ? <>
+                            <Button type={'button'} className={'blockButton_input'} value={'Delete'} onClick={onDelete}/>
+                            <Button type={'button'} className={'blockButton_input'} value={'Update'} onClick={onUpdate}/>
+                          </>
+                        : <>
+                            <Button type={'button'} className={'blockButton_input'} value={'Create'} onClick={onSubmit}/>
+                          </>
+                    }
                 </div>
             </form>
 

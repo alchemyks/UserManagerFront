@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {baseFetch} from "../services/user.rest";
+import {getUsers} from "../services/user.rest";
 import "../styles/AppStyles.css";
 import User from "./User";
 import TableHeader from "./UI/TableHeader";
@@ -8,7 +8,7 @@ import TableHeader from "./UI/TableHeader";
 export default function Users({selectUser}){
     const [users, setUsers] = useState([]);
     useEffect(()=>{
-        baseFetch('users').then(value => {
+        getUsers('users').then(value => {
 
             setUsers(value)})
     },[])
